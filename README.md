@@ -9,6 +9,10 @@ Change current directory to FastBlog:-
 
     cd FastBlog
 
+Install the required dependencies :- 
+
+    pip install -r requirements.txt
+
 Run the application on port 8000:
 
     fastapi dev main.py 
@@ -72,3 +76,4 @@ Run the application on port 8000:
 Documentation for API endpoints and schemas can be accessed by accessing route
 
     http://localhost:8000/docs
+
