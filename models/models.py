@@ -24,10 +24,10 @@ class Blog(BaseModel):
 
 class Comment(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    author: Optional[PyObjectId] = None
+    author: Optional[PyObjectId]
     text: str
     likes: int = 0
     dislikes: int = 0
     created_on: Optional[datetime] = None
-    parent_blog : Optional["Blog"] = None
-    parent_comment : Optional["Comment"] = None
+    parent_blog : Optional[PyObjectId] = None
+    parent_comment : Optional[PyObjectId] = None

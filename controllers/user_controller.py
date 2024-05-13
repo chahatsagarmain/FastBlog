@@ -33,10 +33,16 @@ async def update_user_controller(db : AsyncIOMotorDatabase , update_user : Updat
         if key not in update_data:
             update_data[key] = value
     updated_user = await users_coll.update_one(filter={"_id" : ObjectId(id)},update={"$set" : update_data})
+    if updated_user.modified_count == 0:
+        return None
     return updated_user.acknowledged
 
 async def delete_user_controller(db: AsyncIOMotorDatabase,id : str):
     user_coll = db.get_collection("users")
     deleted_user = await user_coll.delete_one(filter={"_id" : ObjectId(id)})
+    
+    if deleted_user.deleted_count == 0:
+        return None
+    
     return deleted_user.acknowledged
     
