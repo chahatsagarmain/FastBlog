@@ -10,7 +10,7 @@ class User(BaseModel):
     email: str
     password: str
     created_on: Optional[datetime] = None
-    blogs: Optional[List["Blog"]] = []
+    blogs: Optional[List[PyObjectId]] = []
 
 class Blog(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
@@ -18,13 +18,13 @@ class Blog(BaseModel):
     content: str
     likes: int = 0
     dislikes: int = 0
-    author: User
+    author: str
     created_on: Optional[datetime] = None
-    comments: List["Comment"] = []
+    comments: List[PyObjectId] = []
 
 class Comment(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    author: Optional[User] = None
+    author: Optional[PyObjectId] = None
     text: str
     likes: int = 0
     dislikes: int = 0

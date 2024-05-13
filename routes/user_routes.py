@@ -13,7 +13,7 @@ client, db = connect_to_db()
 async def get_users():
     try:
         users = await user_controller.get_all_users(db)
-        user_data = [User(**user).model_dump_json() for user in users]
+        user_data = [User(**user).model_dump(mode="json") for user in users]
         return JSONResponse(content={"data": user_data}, status_code=200)
     except Exception as e:
         print(e)
